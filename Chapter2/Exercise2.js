@@ -8,7 +8,6 @@ for (var i = 1; i <= 100; i++) {
     else 
       console.log(i);
   }
-  
   for (var i = 1; i <= 100; i++) {
     var output = "";
     if (i%3==0) 
