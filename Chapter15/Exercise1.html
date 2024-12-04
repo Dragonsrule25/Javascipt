@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Balloon Animation</title>
+  <style>
+
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: #87CEEB;
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: 10px;  
+      left: 10px;    
+      width: 60px;
+      height: 80px;
+      background-color: red;
+      border-radius: 50%;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="balloon"></div>
+
+  <script>
+    const balloon = document.querySelector('.balloon');
+    let balloonPosition = 10; 
+    let velocity = 1;
+
+    function animateBalloon() {
+      if (balloonPosition >= window.innerHeight - 100) {
+        
+        balloon.style.transition = "transform 0.1s ease-out";
+        balloon.style.transform = "scale(0)";  
+        setTimeout(() => {
+          balloon.remove(); 
+        }, 200);  
+        return;  
+      }
+
+      balloonPosition += velocity;
+      balloon.style.bottom = balloonPosition + 'px';
+
+      requestAnimationFrame(animateBalloon);
+    }
+    animateBalloon();
+  </script>
+
+</body>
+</html>

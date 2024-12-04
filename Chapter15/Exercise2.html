@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mouse Trail</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: #f0f0f0;
+    }
+
+    .trail-dot {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: rgba(0, 0, 255, 0.6);
+      border-radius: 50%;
+      pointer-events: none;  
+      transition: transform 0.1s, opacity 0.3s ease-out;
+    }
+  </style>
+</head>
+<body>
+
+  <script>
+    
+    function createTrailDot(x, y) {
+      const dot = document.createElement('div');
+      dot.classList.add('trail-dot');
+      document.body.appendChild(dot);
+      dot.style.left = `${x - 5}px`; 
+      dot.style.top = `${y - 5}px`;
+
+      setTimeout(() => {
+        dot.style.opacity = '0'; 
+      }, 100);  
+
+      setTimeout(() => {
+        dot.remove();
+      }, 500); 
+    }
+
+    document.addEventListener('mousemove', (event) => {
+      createTrailDot(event.clientX, event.clientY);
+    });
+  </script>
+
+</body>
+</html>
