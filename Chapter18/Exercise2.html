@@ -1,0 +1,17 @@
+<textarea id="code">return "hi";</textarea>
+<button id="button">Run</button>
+<pre id="output"></pre>
+<script defer type="text/javascript">
+    let code = document.querySelector("#code");
+    let button = document.querySelector("#button");
+    let output = document.querySelector("#output");
+    button.addEventListener("click", event => {
+        try {
+            let result = (Function("", code.value))(); 
+            output.textContent = result;
+        }
+        catch(error) {
+            output.textContent = error;
+        }
+    });
+</script>
